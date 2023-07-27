@@ -4,6 +4,7 @@
 # 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
 
 import my_linear_regression
+import my_logic_regression
 import draw_designs
 def print_hi(name):
     # 在下面的代码行中使用断点来调试脚本。
@@ -51,5 +52,15 @@ def example_linear_regression():
 
 # 按间距中的绿色按钮以运行脚本。
 if __name__ == '__main__':
+
     #线性回归案例。
-    example_linear_regression()
+    #example_linear_regression()
+
+    #逻辑回归案例。
+    mlor = my_logic_regression.MyLogicRegression('examdata.csv')
+    mlor.create_model(mlor.x_second_order)
+    print(mlor.get_predicted_data(mlor.x_second_order))
+    print(mlor.get_accuracy(mlor.x_second_order))
+    print(mlor.get_single_predicted_2(90,90))
+    print('你有'+ str(int(mlor.get_accuracy(mlor.x_second_order)*100)) +'%的概率'+mlor.get_single_predicted_2(90,90))
+    mlor.draw()
