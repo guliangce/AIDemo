@@ -5,7 +5,7 @@
 
 import my_linear_regression
 import my_logic_regression
-import my_unsupervised_learning
+import my_kmeans
 import draw_designs
 
 def print_hi(name):

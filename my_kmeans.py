@@ -10,7 +10,16 @@ def my_print(*args):
     # pass
     print(*args)
 
-class MyUnsupervisedLearning:
+class MyKmeans:
+
+    '''
+    kmeans算法，一种非监督算法，
+    1.根据给定的k值，选取k个样本点作为初始划分中心；
+    2.计算所有样本点到每一个划分中心的距离，并将所有样本点划分到距离最近的划分中心；
+    3.计算每个划分中样本点的平均值，将其作为新的中心；
+    循环进行2~3步直至达到最大迭代次数，或划分中心的变化小于某一预定义阈值
+    '''
+
     def __init__(self,file):
         # 获取数据文件
         self.data = pd.read_csv(file)
@@ -52,10 +61,9 @@ class MyUnsupervisedLearning:
     def get_accuracy(self):
         my_print(pd.value_counts(self.get_predicted_data()))
         #转换Y为0维数组
-        my_print(pd.value_counts(np.array(self.y).reshape(-1)))
+        #my_print(pd.value_counts(np.array(self.y).reshape(-1)))
         my_print(pd.value_counts(self.rectification()))
         return accuracy_score(self.y,self.rectification())
-
 
     def rectification(self):
         py = self.get_predicted_data()
@@ -69,10 +77,13 @@ class MyUnsupervisedLearning:
                 cy.append(0)
         return cy
 
+    def predict_single(self,x1,x2):
+        return self.km.predict([[x1,x2]])
 
 
 if __name__ == '__main__':
-    mul = MyUnsupervisedLearning('my_unsupervised_learning.csv')
+    mul = MyKmeans('my_unsupervised_learning.csv')
     mul.create_model_kmeans()
     print(mul.get_accuracy())
+    print(mul.predict_single(80,10))
     mul.draw()
