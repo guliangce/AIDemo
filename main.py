@@ -5,7 +5,9 @@
 
 import my_linear_regression
 import my_logic_regression
+import my_unsupervised_learning
 import draw_designs
+
 def print_hi(name):
     # 在下面的代码行中使用断点来调试脚本。
     print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
@@ -57,6 +59,7 @@ if __name__ == '__main__':
     #example_linear_regression()
 
     #逻辑回归案例。
+    '''
     mlor = my_logic_regression.MyLogicRegression('examdata.csv')
     mlor.create_model(mlor.x_second_order)
     print(mlor.get_predicted_data(mlor.x_second_order))
@@ -64,3 +67,7 @@ if __name__ == '__main__':
     print(mlor.get_single_predicted_2(90,90))
     print('你有'+ str(int(mlor.get_accuracy(mlor.x_second_order)*100)) +'%的概率'+mlor.get_single_predicted_2(90,90))
     mlor.draw()
+    '''
+    #无监督学习
+    mul = my_unsupervised_learning.MyUnsupervisedLearning('my_unsupervised_learning.csv')
+    mul.draw()
